@@ -8,14 +8,25 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>This is your first app on Stormkit.</p>
-        <a
-          className="App-link"
-          href="https://www.stormkit.io/docs"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Read the docs
-        </a>
+        <div>
+          <a
+            className="App-link"
+            href="https://www.stormkit.io/docs"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Read the docs
+          </a>{" "}
+          |{" "}
+          <a
+            href="https://github.com/stormkit-dev/sample-project"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="App-link"
+          >
+            Fork the repo
+          </a>{" "}
+        </div>
       </header>
     </div>
   );
