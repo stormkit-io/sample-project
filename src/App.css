@@ -18,6 +18,34 @@
   color: white;
 }
 
+.App-content {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.App-links {
+  color: #4f4f4f;
+}
+
 .App-link {
   color: #61dafb;
+}
+
+.App-social {
+  color: #61dafb;
+  font-size: 3rem;
+  flex: 0 0  auto;
+  margin-bottom: 2rem;
+}
+
+.fa-twitter {
+  color: #1ea1f2;
+  margin-right: 1rem;
+}
+
+.fa-youtube {
+  color: #ff0000;
 }
