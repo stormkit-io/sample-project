@@ -1,4 +1,4 @@
-import http from "http";
+import * as http from "http";
 import fetch from "node-fetch";
 
 export default (req: http.IncomingMessage, res: http.ServerResponse) => {
