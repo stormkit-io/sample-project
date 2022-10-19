@@ -31,13 +31,14 @@
 }
 
 .App-link {
+  font-size: 1.1rem;
   color: #61dafb;
 }
 
 .App-social {
   color: #61dafb;
   font-size: 3rem;
-  flex: 0 0  auto;
+  flex: 0 0 auto;
   margin-bottom: 2rem;
 }
 
@@ -48,4 +49,19 @@
 
 .fa-youtube {
   color: #ff0000;
+}
+
+p {
+  line-height: 1.5;
+}
+
+.App-api-response {
+  background-color: black;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  white-space: pre;
+  text-align: left;
+  width: 100%;
+  max-width: 750px;
 }
