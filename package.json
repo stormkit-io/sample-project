@@ -8,7 +8,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev:api": "SERVERLESS_PORT=9090 node ./node_modules/@stormkit/serverless/dist/dev-server.js"
+    "dev:api": "stormkit api"
   },
   "eslintConfig": {
     "extends": [
@@ -41,6 +41,7 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
-    "@stormkit/serverless": "^0.9.10"
+    "@stormkit/cli": "^0.7.5",
+    "@stormkit/serverless": "^1.0.3"
   }
 }
