@@ -4,12 +4,6 @@ import { json } from "@codemirror/lang-json";
 import logo from "./logo.png";
 import "./App.css";
 
-function generateApiResponse(response) {
-  return `{
-  "api-docs": "${response.docs}"
-}`;
-}
-
 function App() {
   const [apiResponse, setApiResponse] = useState();
   const [loading, setLoading] = useState(false);
