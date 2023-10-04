@@ -4,7 +4,7 @@ This project is an example project to be deployed on [Stormkit](https://www.stor
 
 ## Features
 
-✅ api
+✅ api<br/>
 ✅ redirects (see [redirects.json](./redirects.json))
 
 ## Testing locally
