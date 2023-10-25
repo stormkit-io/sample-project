@@ -41,7 +41,7 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
-    "@stormkit/cli": "^0.8.9",
-    "@stormkit/serverless": "^1.2.0"
+    "@stormkit/cli": "^0.9.1",
+    "@stormkit/serverless": "^2.0.8"
   }
 }
