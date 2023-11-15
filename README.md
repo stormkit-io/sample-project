@@ -1,6 +1,6 @@
 ## Sample Project
 
-This project is an example project to be deployed on [Stormkit](https://www.stormkit.io). 
+This is an example project to be deployed on [Stormkit](https://www.stormkit.io). 
 
 ## Features
 
