@@ -1,0 +1,9 @@
+/*
+  # Custom Header
+  X-Message: Hello World! 
+
+/*.js
+  # Allow CORS for JS files.
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Headers: *
+  Access-Control-Allow-Methods: *
