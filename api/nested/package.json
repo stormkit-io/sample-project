@@ -1,0 +1,14 @@
+{
+  "name": "nested",
+  "version": "1.0.0",
+  "description": "custom module declaration for nested api-routes.",
+  "main": "api-route.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "query-string": "^8.2.0"
+  }
+}
