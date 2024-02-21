@@ -42,6 +42,7 @@
   },
   "devDependencies": {
     "@stormkit/cli": "^0.9.1",
-    "@stormkit/serverless": "^2.1.4"
+    "@stormkit/serverless": "^2.2.0",
+    "axios": "^1.6.7"
   }
 }
