@@ -1,4 +1,5 @@
 [
+  { "from": "*", "to": "/index.html" },
   { "from": "/redirects/permanent", "to": "/", "status": 301 },
   { "from": "/redirects/temporary", "to": "/", "status": 302 },
   { "from": "/redirects/rewrite", "to": "/" },
