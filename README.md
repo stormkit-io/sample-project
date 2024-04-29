@@ -1,4 +1,4 @@
-## Sample Project
+## Sample Project (Example PR)
 
 This is an example project to be deployed on [Stormkit](https://www.stormkit.io). 
 
