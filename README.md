@@ -4,8 +4,9 @@ This is an example project to be deployed on [Stormkit](https://www.stormkit.io)
 
 ## Features
 
-✅ api<br/>
-✅ redirects (see [redirects.json](./redirects.json))
+✅ [api](./api)<br/>
+✅ [custom redirects](./redirects.json)<br/>
+✅ [custom headers](./headers)
 
 ## Testing locally
 
