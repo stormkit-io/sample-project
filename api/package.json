@@ -1,0 +1,7 @@
+{
+  "name": "sample-project-functions",
+  "version": "1.0.0",
+  "dependencies": {
+    "node-glob": "^1.2.0"
+  }
+}
