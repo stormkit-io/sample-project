@@ -9,8 +9,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dev:api": "stormkit api",
-    "e2e": "ts-node scripts/e2e.ts",
-    "puppeteer": "ts-node scripts/puppeteer.ts"
+    "test:smoke": "ts-node scripts/smoke.ts",
+    "test:puppeeter": "ts-node scripts/puppeteer.ts"
   },
   "eslintConfig": {
     "extends": [
