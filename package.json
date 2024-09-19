@@ -10,7 +10,7 @@
     "eject": "react-scripts eject",
     "dev:api": "stormkit api",
     "e2e": "ts-node scripts/e2e.ts",
-    "puppeteer": ""
+    "puppeteer": "ts-node scripts/puppeteer.ts"
   },
   "eslintConfig": {
     "extends": [
