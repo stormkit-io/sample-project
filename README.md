@@ -26,4 +26,3 @@ npm run dev:api
 
 [@savasvedova](https://x.com/savasvedova)
 
-1
