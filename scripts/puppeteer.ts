@@ -18,7 +18,11 @@ if (!endpoint) {
 }
 
 (async () => {
-  const browser = await puppeteer.launch();
+  // See https://pptr.dev/troubleshooting#setting-up-chrome-linux-sandbox
+  const browser = await puppeteer.launch({
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+  });
+
   const page = await browser.newPage();
 
   // Set viewport width and height (no need in reality, just here for an example)

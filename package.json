@@ -35,9 +35,9 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "@uiw/react-codemirror": "^4.23.1",
+    "@uiw/react-codemirror": "^4.23.6",
     "node-fetch": "^2.7.0",
-    "puppeteer": "^23.4.0",
+    "puppeteer": "^23.10.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "^5.0.1",
@@ -46,7 +46,7 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@stormkit/cli": "^0.9.1",
-    "@stormkit/serverless": "^2.3.4",
-    "axios": "^1.7.7"
+    "@stormkit/serverless": "^2.5.3",
+    "axios": "^1.7.9"
   }
 }
