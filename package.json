@@ -4,11 +4,8 @@
   "private": true,
   "proxy": "http://localhost:9090",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "dev:api": "stormkit api",
+    "start": "vite serve",
+    "build": "vite build",
     "test:smoke": "tsx scripts/smoke.ts",
     "test:puppeeter": "tsx scripts/puppeteer.ts"
   },
@@ -40,15 +37,15 @@
     "puppeteer": "^23.10.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@stormkit/cli": "^0.9.1",
-    "@stormkit/serverless": "^2.5.3",
+    "@stormkit/serverless": "^2.5.4",
+    "@vitejs/plugin-react": "^4.3.4",
     "ts-node": "^10.9.2",
     "tsx": "^4.19.2",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "vite": "^6.0.6"
   }
 }
