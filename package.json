@@ -47,7 +47,6 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@stormkit/cli": "^0.9.1",
     "@stormkit/serverless": "^2.5.3",
-    "axios": "^1.7.9",
     "tsx": "^4.19.2"
   }
 }
