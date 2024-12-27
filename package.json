@@ -9,8 +9,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dev:api": "stormkit api",
-    "test:smoke": "ts-node scripts/smoke.ts",
-    "test:puppeeter": "ts-node scripts/puppeteer.ts"
+    "test:smoke": "tsx scripts/smoke.ts",
+    "test:puppeeter": "tsx scripts/puppeteer.ts"
   },
   "eslintConfig": {
     "extends": [
@@ -48,6 +48,6 @@
     "@stormkit/cli": "^0.9.1",
     "@stormkit/serverless": "^2.5.3",
     "axios": "^1.7.9",
-    "ts-node": "^10.9.2"
+    "tsx": "^4.19.2"
   }
 }
