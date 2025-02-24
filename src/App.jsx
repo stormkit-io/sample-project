@@ -12,7 +12,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div className="App-content">
-          <img src={logo} className="App-logo" alt="logo" />
+          <img src={`${logo}?width=150`} className="App-logo" alt="logo" />
           <p>
             This is your first app on Stormkit.
             <br />
