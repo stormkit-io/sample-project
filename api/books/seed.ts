@@ -50,6 +50,11 @@ export default async () => {
   `);
 
   console.log("Seeding completed.");
+  console.log("Closing database connection...");
+
+  await client.end();
+
+  console.log("Database connection closed.");
 
   return {
     body: "3 books seeded successfully",
