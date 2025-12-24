@@ -32,7 +32,12 @@ async function ensureConnected() {
 
 // Using object-return syntax
 export default async () => {
+  console.log("Received request...");
+  console.log("Connecting to the database...");
   await ensureConnected();
+
+  console.log("Connected to the database.");
+  console.log("Seeding sample books...");
 
   // Insert 3 sample books
   await client.query(`
@@ -43,6 +48,8 @@ export default async () => {
       ('1984', 'George Orwell', '1949-06-08', '978-0-452-28423-4', 328)
     ON CONFLICT (isbn) DO NOTHING
   `);
+
+  console.log("Seeding completed.");
 
   return {
     body: "3 books seeded successfully",
