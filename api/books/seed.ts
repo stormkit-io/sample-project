@@ -40,7 +40,8 @@ export default async () => {
   console.log("Seeding sample books...");
 
   // Insert 3 sample books
-  await client.query(`
+  try {
+    await client.query(`
     INSERT INTO books (title, author, published_date, isbn, pages)
     VALUES 
       ('The Great Gatsby', 'F. Scott Fitzgerald', '1925-04-10', '978-0-7432-7356-5', 180),
@@ -48,13 +49,16 @@ export default async () => {
       ('1984', 'George Orwell', '1949-06-08', '978-0-452-28423-4', 328)
     ON CONFLICT (isbn) DO NOTHING
   `);
+  } catch (error) {
+    console.error("Error seeding books:", error);
+
+    return {
+      body: "Error seeding books",
+      status: 500,
+    };
+  }
 
   console.log("Seeding completed.");
-  console.log("Closing database connection...");
-
-  await client.end();
-
-  console.log("Database connection closed.");
 
   return {
     body: "3 books seeded successfully",
