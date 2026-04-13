@@ -4,5 +4,9 @@
   { "from": "/redirects/rewrite", "to": "/" },
   { "from": "/redirects/proxy", "to": "https://example.com/" },
   { "from": "/redirects/proxy-404", "to": "https://stormkit.io/404" },
-  { "from": "*", "to": "/index.html" }
+  {
+    "from": "*",
+    "to": "/index.html",
+    "exclude": ["/register"]
+  }
 ]

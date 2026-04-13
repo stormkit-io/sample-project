@@ -2,11 +2,22 @@ import React, { useState } from "react";
 import Code from "@uiw/react-codemirror";
 import { json } from "@codemirror/lang-json";
 import logo from "./logo.png";
+import Register from "./RegistrationForm";
 import "./App.css";
 
 function App() {
   const [apiResponse, setApiResponse] = useState();
   const [loading, setLoading] = useState(false);
+
+  if (window.location.pathname === "/register") {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <Register />
+        </header>
+      </div>
+    );
+  }
 
   return (
     <div className="App">
