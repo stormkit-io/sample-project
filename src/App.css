@@ -58,6 +58,10 @@ p {
 .Register {
   margin-top: 2rem;
   text-align: left;
+  max-width: 480px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 8px;
 }
 
 .Register-form {
@@ -95,6 +99,21 @@ p {
   border-radius: 4px;
   cursor: pointer;
   align-self: flex-start;
+}
+
+.Register-token {
+  margin-top: 1rem;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: #61dafb;
+}
+
+.Register-error {
+  margin-top: 1rem;
+  color: #f87171;
+  font-size: 0.9rem;
 }
 
 .App-api-response {
