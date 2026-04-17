@@ -8,7 +8,7 @@
     "build": "vite build",
     "test:smoke": "tsx scripts/smoke.ts",
     "test:puppeeter": "tsx scripts/puppeteer.ts",
-    "stormkit:headline": "tsx scripts/stormkit-headline.ts"
+    "stormkit:headline": "echo \"Browser location: $PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH\" && tsx scripts/stormkit-headline.ts"
   },
   "eslintConfig": {
     "extends": [
