@@ -2,7 +2,7 @@ import { chromium } from "playwright";
 
 (async () => {
   const browser = await chromium.launch({
-    executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH,
+    executablePath: process.env.MISE_CHROMIUM_PATH,
   });
   const page = await browser.newPage();
 
