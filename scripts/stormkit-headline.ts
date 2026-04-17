@@ -1,7 +1,9 @@
 import { chromium } from "playwright";
 
 (async () => {
-  const browser = await chromium.launch();
+  const browser = await chromium.launch({
+    executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH,
+  });
   const page = await browser.newPage();
 
   await page.goto("https://www.stormkit.io", { waitUntil: "networkidle" });
