@@ -46,7 +46,6 @@
     "@types/pg": "^8.20.0",
     "@vitejs/plugin-react": "^4.7.0",
     "pg": "^8.20.0",
-    "playwright": "^1.59.1",
     "ts-node": "^10.9.2",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
