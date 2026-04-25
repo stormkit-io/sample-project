@@ -18,6 +18,7 @@
           ];
 
           shellHook = ''
+            export CHROMIUM_EXECUTABLE_PATH=${pkgs.chromium}/bin/chromium
             export PLAYWRIGHT_BROWSERS_PATH=${pkgs.playwright-driver.browsers}
             export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
           '';
