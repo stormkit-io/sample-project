@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="/logo.png" />
+    <title>{{data.title:-Product}} · Stormkit Dynamic Pages</title>
+    <meta name="description" content="{{data.description:-A product page rendered by a Stormkit data loader.}}" />
+    <meta property="og:title" content="{{data.title:-Product}}" />
+    <meta property="og:description" content="{{data.description}}" />
+    <meta property="og:image" content="{{data.thumbnail}}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <style>
+      :root {
+        --bg: #0f1117;
+        --panel: #181b24;
+        --border: #2a2f3d;
+        --text: #e6e8ee;
+        --muted: #9aa3b5;
+        --accent: #7c5cff;
+        --good: #3ecf8e;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+      }
+
+      main {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 32px 16px 64px;
+      }
+
+      a {
+        color: var(--accent);
+      }
+
+      .eyebrow {
+        color: var(--muted);
+        font-size: 13px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .product {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+        gap: 32px;
+        margin: 24px 0 40px;
+      }
+
+      .product img {
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: contain;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+      }
+
+      h1 {
+        margin: 4px 0 12px;
+        font-size: 32px;
+        line-height: 1.2;
+      }
+
+      .price {
+        font-size: 28px;
+        font-weight: 600;
+      }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 20px;
+        color: var(--muted);
+        margin: 12px 0 20px;
+      }
+
+      .tags span {
+        display: inline-block;
+        margin: 0 6px 6px 0;
+        padding: 2px 10px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .panel {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+
+      .panel h2 {
+        margin: 0 0 12px;
+        font-size: 18px;
+      }
+
+      pre {
+        margin: 0;
+        overflow-x: auto;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      nav a {
+        margin-right: 12px;
+      }
+
+      .status {
+        color: var(--good);
+        font-size: 14px;
+      }
+
+      @media (max-width: 720px) {
+        .product {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="eyebrow">Stormkit · Dynamic pages demo</div>
+
+      <section class="product">
+        <img id="product-image" alt="{{data.title}}" />
+        <div>
+          <div class="eyebrow">{{data.category:-uncategorized}} · {{data.brand:-Unbranded}}</div>
+          <h1>{{data.title:-Product not found}}</h1>
+          <div class="price">${{data.price:-0}}</div>
+          <div class="meta">
+            <span>★ {{data.rating:-n/a}}</span>
+            <span>{{data.stock:-0}} in stock</span>
+            <span>{{data.shippingInformation:-Shipping unknown}}</span>
+          </div>
+          <p>{{data.description:-This product could not be loaded.}}</p>
+          <div class="tags" id="product-tags"></div>
+          <p class="status" id="render-status"></p>
+        </div>
+      </section>
+
+      <div class="panel">
+        <h2>How this page was rendered</h2>
+        <p>
+          This is a single static <code>product.html</code> from the build. The
+          rule below in <code>redirects.json</code> tells Stormkit to fetch the
+          product from <a href="https://dummyjson.com">dummyjson.com</a> on every
+          request and fill the <code>&#123;&#123;data.*}}</code> placeholders
+          before the HTML leaves the server — so the title, description and Open
+          Graph tags are right for crawlers and link previews, with no SSR.
+        </p>
+        <pre>{
+  "from": "/products/*",
+  "to": "/product.html",
+  "data": {
+    "url": "https://dummyjson.com/products/$1",
+    "passthroughStatus": true
+  }
+}</pre>
+      </div>
+
+      <div class="panel">
+        <h2>Try another product</h2>
+        <nav>
+          <a href="/products/1">#1</a>
+          <a href="/products/6">#6</a>
+          <a href="/products/78">#78</a>
+          <a href="/products/121">#121</a>
+          <a href="/products/99999">#99999 (real 404)</a>
+          <a href="/">← Home</a>
+        </nav>
+      </div>
+
+      <div class="panel">
+        <h2>Injected document (<code>&#123;&#123;data}}</code>)</h2>
+        <pre id="raw-data"></pre>
+      </div>
+    </main>
+
+    <script id="__sk_data__" type="application/json">{{data}}</script>
+    <script>
+      (function () {
+        var raw = document.getElementById("__sk_data__").textContent;
+        var status = document.getElementById("render-status");
+        var data;
+
+        try {
+          data = JSON.parse(raw);
+          status.textContent = "✓ Filled server-side by the Stormkit data loader";
+        } catch (e) {
+          status.textContent =
+            "Placeholders were not filled — this page only renders when served by Stormkit.";
+          return;
+        }
+
+        if (data.thumbnail) {
+          document.getElementById("product-image").src = data.thumbnail;
+        }
+
+        var tags = document.getElementById("product-tags");
+
+        (data.tags || []).forEach(function (tag) {
+          var el = document.createElement("span");
+          el.textContent = tag;
+          tags.appendChild(el);
+        });
+
+        document.getElementById("raw-data").textContent = JSON.stringify(
+          data,
+          null,
+          2
+        );
+      })();
+    </script>
+  </body>
+</html>

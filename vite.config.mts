@@ -42,6 +42,10 @@ export default defineConfig(({ mode }) => {
     build: {
       outDir: "../build",
       rollupOptions: {
+        input: {
+          main: path.resolve(__dirname, "src/index.html"),
+          product: path.resolve(__dirname, "src/product.html"),
+        },
         // Material ui's "use client" directive causes a warning.
         // This function ignores those warnings.
         // See https://github.com/rollup/rollup/issues/4699#issuecomment-1571555307
