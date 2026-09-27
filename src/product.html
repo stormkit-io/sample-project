@@ -4,11 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" href="/logo.png" />
-    <title>{{data.title:-Product}} · Stormkit Dynamic Pages</title>
-    <meta name="description" content="{{data.description:-A product page rendered by a Stormkit data loader.}}" />
-    <meta property="og:title" content="{{data.title:-Product}}" />
-    <meta property="og:description" content="{{data.description}}" />
-    <meta property="og:image" content="{{data.thumbnail}}" />
+    <title>{{.title | default "Product not found"}} · Stormkit Dynamic Pages</title>
+    <meta name="description" content="{{.description | default `A product page rendered by a Stormkit data loader.`}}" />
+    <meta property="og:title" content="{{.title | default `Product not found`}}" />
+    <meta property="og:description" content="{{.description}}" />
+    <meta property="og:image" content="{{.thumbnail}}" />
     <meta name="twitter:card" content="summary_large_image" />
     <style>
       :root {
@@ -95,6 +95,10 @@
         color: var(--muted);
       }
 
+      .product-missing {
+        margin: 24px 0 40px;
+      }
+
       .panel {
         background: var(--panel);
         border: 1px solid var(--border);
@@ -135,22 +139,34 @@
     <main>
       <div class="eyebrow">Stormkit · Dynamic pages demo</div>
 
+      {{if .}}
       <section class="product">
-        <img id="product-image" alt="{{data.title}}" />
+        <img src="{{.thumbnail}}" alt="{{.title}}" />
         <div>
-          <div class="eyebrow">{{data.category:-uncategorized}} · {{data.brand:-Unbranded}}</div>
-          <h1>{{data.title:-Product not found}}</h1>
-          <div class="price">${{data.price:-0}}</div>
+          <div class="eyebrow">{{.category | default "uncategorized"}} · {{.brand | default "Unbranded"}}</div>
+          <h1>{{.title}}</h1>
+          <div class="price">${{.price}}</div>
           <div class="meta">
-            <span>★ {{data.rating:-n/a}}</span>
-            <span>{{data.stock:-0}} in stock</span>
-            <span>{{data.shippingInformation:-Shipping unknown}}</span>
+            <span>★ {{.rating}}</span>
+            <span>{{.stock}} in stock</span>
+            <span>{{.shippingInformation}}</span>
           </div>
-          <p>{{data.description:-This product could not be loaded.}}</p>
-          <div class="tags" id="product-tags"></div>
-          <p class="status" id="render-status"></p>
+          <p>{{.description}}</p>
+          <div class="tags">{{range .tags}}<span>{{.}}</span>{{end}}</div>
+          <p class="status">✓ Rendered server-side by the Stormkit data loader</p>
         </div>
       </section>
+      {{else if eq status 404}}
+      <section class="product-missing">
+        <h1>Product not found</h1>
+        <p>DummyJSON has no product with this id, so this page is served with a real 404.</p>
+      </section>
+      {{else}}
+      <section class="product-missing">
+        <h1>Something went wrong</h1>
+        <p>The product API did not answer (status {{status}}). Please try again later.</p>
+      </section>
+      {{end}}
 
       <div class="panel">
         <h2>How this page was rendered</h2>
@@ -158,7 +174,7 @@
           This is a single static <code>product.html</code> from the build. The
           rule below in <code>redirects.json</code> tells Stormkit to fetch the
           product from <a href="https://dummyjson.com">dummyjson.com</a> on every
-          request and fill the <code>&#123;&#123;data.*}}</code> placeholders
+          request and fill the <code>{{"{{"}}.field}}</code> placeholders
           before the HTML leaves the server — so the title, description and Open
           Graph tags are right for crawlers and link previews, with no SSR.
         </p>
@@ -185,44 +201,26 @@
       </div>
 
       <div class="panel">
-        <h2>Injected document (<code>&#123;&#123;data}}</code>)</h2>
+        <h2>Injected document (<code>{{"{{"}}.}}</code>)</h2>
         <pre id="raw-data"></pre>
       </div>
     </main>
 
-    <script id="__sk_data__" type="application/json">{{data}}</script>
+    <script id="__sk_data__" type="application/json">{{.}}</script>
     <script>
       (function () {
         var raw = document.getElementById("__sk_data__").textContent;
-        var status = document.getElementById("render-status");
-        var data;
 
         try {
-          data = JSON.parse(raw);
-          status.textContent = "✓ Filled server-side by the Stormkit data loader";
+          document.getElementById("raw-data").textContent = JSON.stringify(
+            JSON.parse(raw),
+            null,
+            2
+          );
         } catch (e) {
-          status.textContent =
-            "Placeholders were not filled — this page only renders when served by Stormkit.";
-          return;
+          document.getElementById("raw-data").textContent =
+            "Not rendered by Stormkit — open this page on a deployment.";
         }
-
-        if (data.thumbnail) {
-          document.getElementById("product-image").src = data.thumbnail;
-        }
-
-        var tags = document.getElementById("product-tags");
-
-        (data.tags || []).forEach(function (tag) {
-          var el = document.createElement("span");
-          el.textContent = tag;
-          tags.appendChild(el);
-        });
-
-        document.getElementById("raw-data").textContent = JSON.stringify(
-          data,
-          null,
-          2
-        );
       })();
     </script>
   </body>
