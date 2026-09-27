@@ -5,6 +5,15 @@
   { "from": "/redirects/proxy", "to": "https://example.com/" },
   { "from": "/redirects/proxy-404", "to": "https://stormkit.io/404" },
   {
+    "from": "/products/*",
+    "to": "/product.html",
+    "data": {
+      "url": "https://dummyjson.com/products/$1",
+      "passthroughStatus": true
+    }
+  },
+  { "from": "/product(.html)?$", "to": "/products/1", "status": 301 },
+  {
     "from": "*",
     "to": "/index.html",
     "exclude": ["/register"]

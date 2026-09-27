@@ -96,6 +96,10 @@ function App() {
             >
               Fork the repo
             </a>{" "}
+            |{" "}
+            <a href="/products/1" className="App-link">
+              Dynamic pages demo
+            </a>
           </div>
         </div>
         <div className="App-social">
